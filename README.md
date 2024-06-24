@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Smile Centers App
 
-## Getting Started
+Smile Centers App es una aplicación web que permite a los usuarios ver y filtrar centros de sonrisas (Smile Centers) por zona y tipo de centro. La aplicación utiliza Next.js para el frontend y Axios para las solicitudes HTTP a la API de Smile Centers.
 
-First, run the development server:
+## Características
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Mostrar una lista de centros de sonrisas.
+- Filtrar centros por zona.
+- Filtrar centros por tipo de centro.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Requisitos
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Node.js (versión 12 o superior)
+- npm (versión 6 o superior)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Instalación
 
-## Learn More
+1. Clona el repositorio:
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   git https://github.com/91-julian-sanchez/smile-centers-app.git
+   cd smile-centers-app
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Instala las dependencias:
+    ```bash
+    npm install
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Configuración
+Crea un archivo .env.local en la raíz del proyecto con el siguiente contenido:
+    ```
+    SMILE_CENTERS_API_URL=http://tu-api-url
+    ```
 
-## Deploy on Vercel
+## Uso
+### Ejecutar en modo de desarrollo
+Para iniciar la aplicación en modo de desarrollo, ejecuta:
+    ```bash
+    npm run dev
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Filtrar Smile Centers
+La aplicación Smile Centers permite a los usuarios filtrar los centros de sonrisas por zona y tipo de centro. Aquí se explica cómo funcionan los filtros:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+* Filtrar por zona:
+
+Selecciona una zona del menú desplegable "Seleccione zona".
+La aplicación enviará una solicitud a la API para obtener los centros de sonrisas que se encuentran en la zona seleccionada.
+
+* Filtrar por tipo de centro:
+
+Selecciona un tipo de centro del menú desplegable "Tipo de centro".
+La aplicación enviará una solicitud a la API para obtener los centros de sonrisas que coinciden con el tipo de centro seleccionado.
+
+**Nota:** Si seleccionas "Todas" en cualquiera de los menús desplegables, se mostrarán todos los centros de sonrisas sin aplicar ningún filtro.
