@@ -18,16 +18,45 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: white;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.font-inter-bold {
+  font-family: "Inter Bold", "Helvetica Neue", Arial, sans-serif !important;
+}
+
+.color-font-blue-900 {
+  font-weight: 900;
+  color: #2904e0;
+}
+
+.color-font-red-900 {
+  font-weight: 900;
+  color: #d30404;
+}
+
+.color-font-gray-700 {
+  color: #616161 !important;
+}
+
+/* .cardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+} */
+
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.scheduler{
+  font-size: 12px;
 }
