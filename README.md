@@ -36,9 +36,9 @@ Crea un archivo .env.local en la raíz del proyecto con el siguiente contenido:
 ## Uso
 ### Ejecutar en modo de desarrollo
 Para iniciar la aplicación en modo de desarrollo, ejecuta:
-    ```bash
-    npm run dev
-    ```
+```
+npm run dev
+```
 
 ### Filtrar Smile Centers
 La aplicación Smile Centers permite a los usuarios filtrar los centros de sonrisas por zona y tipo de centro. Aquí se explica cómo funcionan los filtros:
