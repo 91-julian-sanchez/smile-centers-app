@@ -8,40 +8,65 @@ import { SmileCenter } from '../types';
 const fetchSmileCenters = async (): Promise<SmileCenter[]> => {
   const response = await axios.get(`${process.env.SMILE_CENTERS_API_URL}/smile-center`);
   return response.data;
- 
 };
 
 const Home = () => {
   const [smileCenters, setSmileCenters] = useState<SmileCenter[]>([]);
+  const [zones, setZones] = useState<string[]>([]);
+  const [centerTypes, setCenterTypes] = useState<string[]>([]);
+  const [services, setServices] = useState<string[]>([]);
   const [selectedZone, setSelectedZone] = useState<string>('');
   const [selectedCenterType, setSelectedCenterType] = useState<string>('');
+  const [selectedService, setSelectedService] = useState<string>('');
 
   useEffect(() => {
     const fetchData = async () => {
       const centers = await fetchSmileCenters();
       setSmileCenters(centers);
+
+      const uniqueZones = Array.from(new Set(centers.map(center => center.zone)));
+      const uniqueCenterTypes = Array.from(new Set(centers.map(center => center.centerType)));
+
+      const allServices: Set<string> = new Set();
+      centers.forEach(center => {
+        Object.keys(center.services).forEach(service => {
+          allServices.add(service);
+        });
+      });
+
+      setZones(uniqueZones);
+      setCenterTypes(uniqueCenterTypes);
+      setServices(Array.from(allServices));
     };
 
     fetchData();
   }, []);
 
-  const zones = Array.from(new Set(smileCenters.map(center => center.zone)));
-  const centerTypes = Array.from(new Set(smileCenters.map(center => center.centerType)));
-
   const handleZoneChange = async (event: React.ChangeEvent<HTMLSelectElement>) => {
     const zone = event.target.value;
+    setSelectedZone(zone);
     const query = zone !== "all" ? `?zone=${zone}` : "";
     const response = await axios.get(`${process.env.SMILE_CENTERS_API_URL}/smile-center${query}`);
     setSmileCenters(response.data);
   };
-  
+
   const handleCenterTypeChange = async (event: React.ChangeEvent<HTMLSelectElement>) => {
     const centerType = event.target.value;
+    setSelectedCenterType(centerType);
     const query = centerType !== "all" ? `?centerType=${centerType}` : "";
     const response = await axios.get(`${process.env.SMILE_CENTERS_API_URL}/smile-center${query}`);
     setSmileCenters(response.data);
   };
-  
+
+  const handleServiceChange = async (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const service = event.target.value;
+    setSelectedService(service);
+
+    const query = service !== "all" ? `?service=${service}` : "";
+    const response = await axios.get(`${process.env.SMILE_CENTERS_API_URL}/smile-center${query}`);
+    setSmileCenters(response.data);
+  };
+
   return (
     <div className="mainContainer">
       <h1 className="mainTitle">Smile Centers</h1>
@@ -66,6 +91,16 @@ const Home = () => {
             ))}
           </select>
         </label>
+        <label>
+          Seleccionar Servicio:
+          <select onChange={handleServiceChange} value={selectedService} className="selectInput">
+            <option value="">- Seleccionar -</option>
+            <option value="all">Todos los servicios</option>
+            {services.map(service => (
+              <option key={service} value={service}>{service}</option>
+            ))}
+          </select>
+        </label>
       </div>
       <div className="cardContainer">
         {smileCenters.map((center, index) => (
@@ -81,7 +116,6 @@ const Home = () => {
       </div>
     </div>
   );
-  
 };
 
 export default Home;

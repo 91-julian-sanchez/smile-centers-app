@@ -54,3 +54,24 @@ Selecciona un tipo de centro del menú desplegable "Tipo de centro".
 La aplicación enviará una solicitud a la API para obtener los centros de sonrisas que coinciden con el tipo de centro seleccionado.
 
 **Nota:** Si seleccionas "Todas" en cualquiera de los menús desplegables, se mostrarán todos los centros de sonrisas sin aplicar ningún filtro.
+
+## Desplegar en AWS S3
+1. Para desplegar la aplicación en AWS S3, sigue estos pasos:
+
+Construye la aplicación:
+
+```
+npm run build
+```
+
+Los archivos exportados se encontrarán en el directorio out.
+
+2. Sube los archivos del directorio out a tu bucket de S3.
+
+3. Configura el bucket de S3 para alojar un sitio web estático:
+
+Ve a la consola de AWS S3.
+* Selecciona tu bucket.
+* Ve a la pestaña "Properties".
+* En la sección "Static website hosting", selecciona "Enable" y especifica index.html como el documento de índice y index.html como el documento de error.
+* Ajusta las políticas de permisos para que los archivos sean accesibles públicamente.
