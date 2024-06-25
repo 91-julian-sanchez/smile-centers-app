@@ -1,4 +1,5 @@
 export interface SmileCenter {
+    services(services: any): unknown;
     centerType: string;
     zone: string;
     name: string;
