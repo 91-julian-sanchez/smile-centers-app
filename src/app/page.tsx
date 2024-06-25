@@ -43,14 +43,14 @@ const Home = () => {
   };
   
   return (
-    <div>
-      <h1>Smile Centers</h1>
-      <div>
+    <div className="mainContainer">
+      <h1 className="mainTitle">Smile Centers</h1>
+      <div className="filters">
         <label>
-          Seleccione zona:
-          <select onChange={handleZoneChange} value={selectedZone}>
-            <option value="">Seleccionar</option>
-            <option value="all">Todas</option>
+          Seleccionar zona:
+          <select onChange={handleZoneChange} value={selectedZone} className="selectInput">
+            <option value="">- Seleccionar -</option>
+            <option value="all">Todas las zonas</option>
             {zones.map(zone => (
               <option key={zone} value={zone}>{zone}</option>
             ))}
@@ -58,16 +58,16 @@ const Home = () => {
         </label>
         <label>
           Tipo de centro:
-          <select onChange={handleCenterTypeChange} value={selectedCenterType}>
-            <option value="">Seleccionar</option>
-            <option value="all">Todos</option>
+          <select onChange={handleCenterTypeChange} value={selectedCenterType} className="selectInput">
+            <option value="">- Seleccionar -</option>
+            <option value="all">Todos los tipos</option>
             {centerTypes.map(centerType => (
               <option key={centerType} value={centerType}>{centerType}</option>
             ))}
           </select>
         </label>
       </div>
-      <div className='cardContainer'>
+      <div className="cardContainer">
         {smileCenters.map((center, index) => (
           <SmileCenterCard 
             key={index} 
@@ -81,6 +81,7 @@ const Home = () => {
       </div>
     </div>
   );
+  
 };
 
 export default Home;

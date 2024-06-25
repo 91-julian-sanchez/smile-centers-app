@@ -45,18 +45,46 @@ body {
   color: #616161 !important;
 }
 
-/* .cardContainer {
+.mainContainer {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-} */
+  align-items: center;
+  padding: 0 40px;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+label {
+  margin-right: 16px;
+}
+
+.selectInput {
+  width: 200px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin: 8px 10px;
+}
 
 .cardContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 16px;
+  padding-bottom: 40px;
 }
 
-.scheduler{
+.scheduler {
   font-size: 12px;
+}
+
+.mainTitle {
+  margin: 20px 0;
+  font-size: 1.5rem; 
+  font-weight: bold;
+  color: #1a202c; 
+  text-align: center;
 }
